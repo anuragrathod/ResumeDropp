@@ -1,3 +1,4 @@
+ HEAD
 # ResumeDrop — AI Resume Extraction & Excel Automation
 
 ResumeDrop is a 100% Python-native desktop automation suite that ingests batches of PDF, DOCX, and TXT resumes, extracts structured candidate records using a high-throughput multi-key NVIDIA NIM pool (`meta/llama-3.3-70b-instruct`) with automatic HTTP 429 failover, shared 40 RPM rate limiting, and rule-based regex fallback, validates the extracted data, and exports a professionally formatted 5-worksheet Excel workbook.
@@ -13,7 +14,7 @@ ResumeDrop is a 100% Python-native desktop automation suite that ingests batches
 - **OpenAI-Compatible NVIDIA NIM Endpoint**: Powered by `https://integrate.api.nvidia.com/v1` using official Free Endpoint models like `meta/llama-3.3-70b-instruct` (128k context length, high-accuracy structured JSON output).
 - **Python-Only Document Parsing**: Layout-aware text extraction via `PyMuPDF` (`fitz`) and `python-docx` without heavy 4 GB+ PyTorch or Docling bloat (~250 MB total environment).
 - **Rule-Based Hybrid Fallback**: Regex extraction for emails, international phones (+1, +44, +91, Indian 10-digit mobile, UK formats), LinkedIn, GitHub, and portfolios. Fully functional offline.
-- **Data Validation & Sanitization**: Validates graduation years (1950–2035), suppresses duplicate degrees, and neutralizes Excel formula injections (`=`, `+`, `-`, `@`, `\t`, `\r` prefixed with `'`).
+- **Data Validation & Sanitization**: Validates graduation years (1950–2035), suppresses duplicate degrees, and neutralizes Excel formula injections (``, `+`, `-`, `@`, `\t`, `\r` prefixed with `'`).
 - **Professional 5-Worksheet Excel Output**:
   1. `Candidates` — Summary row per candidate with formatted headers, auto-filter, and color-coded status cells.
   2. `Education` — Academic history normalized by degree level and graduation year.
@@ -42,7 +43,7 @@ source .venv/bin/activate       # On Windows: .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-> **Linux Tkinter Note**: On Debian/Ubuntu systems, if Tkinter is not already installed, run `sudo apt install python3-tk`. On Windows and macOS, Tkinter is included automatically with Python.
+ **Linux Tkinter Note**: On Debian/Ubuntu systems, if Tkinter is not already installed, run `sudo apt install python3-tk`. On Windows and macOS, Tkinter is included automatically with Python.
 
 ### 2. Configure Environment
 
@@ -54,14 +55,14 @@ cp .env.example .env
 
 ```env
 # 3 NVIDIA API keys from the same account (https://build.nvidia.com/)
-NVIDIA_API_KEY_1=nvapi-your_first_key_here
-NVIDIA_API_KEY_2=nvapi-your_second_key_here
-NVIDIA_API_KEY_3=nvapi-your_third_key_here
+NVIDIA_API_KEY_1nvapi-your_first_key_here
+NVIDIA_API_KEY_2nvapi-your_second_key_here
+NVIDIA_API_KEY_3nvapi-your_third_key_here
 
 # Selected model and rate limit
-DEFAULT_NVIDIA_MODEL=meta/llama-3.3-70b-instruct
-NVIDIA_RATE_LIMIT_RPM=40
-MAX_WORKERS=3
+DEFAULT_NVIDIA_MODELmeta/llama-3.3-70b-instruct
+NVIDIA_RATE_LIMIT_RPM40
+MAX_WORKERS3
 ```
 
 ### 3. Launch Desktop GUI or Web App
@@ -108,9 +109,9 @@ Run the automated test suite:
 pytest
 
 # Run tests with code coverage
-pytest --cov=src tests/
+pytest --covsrc tests/
 
-# Run extraction throughput benchmark (>800 resumes/sec)
+# Run extraction throughput benchmark (800 resumes/sec)
 python scripts/benchmark.py
 
 # Run accuracy evaluation against synthetic resumes
@@ -153,6 +154,9 @@ ResumeDrop/
 
 ## 🔒 Security
 
-- **Formula Injection Prevention**: Cell contents starting with `=`, `@`, `+`, `-`, `\t`, or `\r` are safely escaped with a leading single quote `'`.
+- **Formula Injection Prevention**: Cell contents starting with ``, `@`, `+`, `-`, `\t`, or `\r` are safely escaped with a leading single quote `'`.
 - **Zero Credential Leakage**: API keys reside solely in environment variables, are masked as `nvapi-***` in logs, and are never exported to workbooks.
 - **Safe Document Ingestion**: Native Python readers prevent macro execution, shell spawning, and external entity resolution.
+
+# ResumeDropp
+ e1c0fa3b62258b9622b59dfb2c718d37eef3c33a
